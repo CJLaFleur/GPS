@@ -1,0 +1,24 @@
+[Settings]
+Priority=Default
+Properties=MyCustomProperty
+
+[Default]
+OSInstall=Y
+SkipCapture=YES
+SkipAdminPassword=YES
+SkipProductKey=YES
+TimeZoneName=Eastern Standard Time
+JoinDomain=gpsk12.local
+DomainAdmin=gpsk12\mdtadmin
+DomainAdminPassword=wUl8+Wljdj
+SkipUserData=YES
+SkipLocaleSelection=YES
+SkipTaskSequence=NO
+SkipApplications=NO
+SkipBitlocker=YES
+SkipSummary=YES
+SkipRoles=YES
+SkipFinalSummary=YES
+SkipComputerName=NO
+SkipDomainMembership=YES
+SkipTimeZone=YES

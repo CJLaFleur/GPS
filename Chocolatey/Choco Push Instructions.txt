@@ -1,0 +1,4 @@
+1. Open a PowerShell window as an admin.
+2. Navigate to the directory containing the nuspec file for the package.
+3. If this is version 1.0 then type <choco pack>
+4. Type <choco push .\packname.x.x.nupkg --source http://10.0.13.7/chocolatey --api-key=40we33f6V5n --force>

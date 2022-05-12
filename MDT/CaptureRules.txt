@@ -1,0 +1,12 @@
+[Settings]
+Priority=Default
+Properties=MyCustomProperty
+
+[Default]
+OSInstall=N
+SkipCapture=NO
+SkipAdminPassword=YES
+SkipProductKey=YES
+SkipComputerBackup=NO
+SkipBitLocker=YES
+DoCapture=YES

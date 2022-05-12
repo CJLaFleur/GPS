@@ -1,0 +1,29 @@
+[Settings]
+Priority=Default
+Properties=MyCustomProperty
+
+[Default]
+OSInstall=Y
+SkipAppsOnUpgrade=YES
+SkipAdminPassword=YES
+SkipProductKey=YES
+SkipComputerName=YES
+SkipDomainMembership=YES
+SkipUserData=YES
+TimeZoneName=Eastern Standard Time
+JoinDomain=gpsk12.local
+DomainAdmin=gpsk12\mdtadmin
+DomainAdminPassword=wUl8+Wljdj
+UserDataLocation=AUTO
+SkipLocaleSelection=YES
+SkipTaskSequence=NO
+DeploymentType=NEWCOMPUTER
+SkipTimeZone=YES
+SkipApplications=YES
+SkipBitLocker=YES
+SkipSummary=YES
+SkipBDDWelcome=YES
+SkipCapture=NO
+DoCapture=NO
+SkipFinalSummary=YES
+DoNotCreateExtraPartition = YES

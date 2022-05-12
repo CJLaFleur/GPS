@@ -1,0 +1,7 @@
+require 'socket'
+
+Facter.add(:nodetype) do
+  setcode do
+    node_type = Array.new
+    hostname = Socket.gethostname
+    if File.readlines("/etc/puppetlabs/code/environments/gms/teachermachines").grep($   

@@ -1,0 +1,40 @@
+{
+  "name": "chocolatey-chocolatey_server",
+  "version": "0.0.5",
+  "author": "chocolatey",
+  "summary": "The Chocolatey Simple Server Package Feed Host",
+  "license": "Apache-2.0",
+  "source": "https://github.com/chocolatey/puppet-chocolatey_server",
+  "project_page": "https://github.com/chocolatey/puppet-chocolatey_server",
+  "issues_url": "https://github.com/chocolatey/puppet-chocolatey_server/issues",
+  "dependencies": [
+    {"name":"puppetlabs/acl","version_requirement":">= 1.0.1 < 2.0.0"},
+    {"name":"puppetlabs/powershell","version_requirement":">= 1.0.4 < 2.0.0"},
+    {"name":"puppet/iis","version_requirement":">= 1.3.0 < 2.0.0"},
+    {"name":"puppet/windowsfeature","version_requirement":">= 1.0.0 < 2.0.0"}
+  ],
+  "data_provider": null,
+  "description": "The Chocolatey Simple Server Package Feed Host",
+  "tags": [
+    "microsoft",
+    "powershell",
+    ".NET Framework",
+    ".Net",
+    "dot_net",
+    "chocolatey",
+    "package",
+    "package manager",
+    "package feed",
+    "package server"
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Windows",
+      "operatingsystemrelease": [
+        "Server 2008 R2",
+        "Server 2012",
+        "Server 2012 R2"
+      ]
+    }
+  ]
+}
