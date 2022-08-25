@@ -31,45 +31,84 @@
              
              $FileReader.Close()
         }
+
+    
+    function Move-UserData($UserObj) {
+
+    $DestinationDir
+    $Username = $UserObj.Username.ToString()
+
+        if ($UserObj.UserType -match "STU") {
+
+            $DestinationDir = "\\" + "$Site" + "-DC01\MyHome$\_STUDENTS\_DisabledStudentData\" + "$Username"
+
+        }
+        
+        else {
+
+            $DestinationDir = "\\" + "$Site" + "-DC01\MyHome$\_STAFF\_DisabledStaffData\" + "$Username"
+
+            }
+            
+        Move-Item -Path $UserObj.HomeDirectory -Destination $DestinationDir
+
+    }
         
   foreach ($U in $Users) {
 
+  
+
     $UserDN  = (Get-ADUser -Identity $U).distinguishedName
     $UserDNStr = $UserDN.ToString()
-    $Temp = (Get-ADUser -Identity $U -Properties HomeDirectory).HomeDirectory
-    $Site = $Temp.Substring(2,3)
+    $Username = $UserDNStr.Split(",")[0]
+    $Username = $Username.Split("=")[1]
+    $HomeDir = (Get-ADUser -Identity $U -Properties HomeDirectory).HomeDirectory
+    $Site = $HomeDir.Substring(2,3)
+    $UserType = $HomeDir.Substring(20,3)
     $GHSStaffOU = "OU=Disabled Staff Accounts,OU=Staff,OU=Users,OU=" + "$Site" + ",OU=District Sites,OU=GPSK12_TREE,DC=GPSK12,DC=local"
     $StudentOU = "OU=Disabled,OU=Students,OU=Users,OU=" + "$Site" + ",OU=District Sites,OU=GPSK12_TREE,DC=GPSK12,DC=local"
     $GMSStudentOU = "OU=Disabled - Left District,OU=Students,OU=Users,OU=" + "$Site" + ",OU=District Sites,OU=GPSK12_TREE,DC=GPSK12,DC=local"
     $NPSStaffOU = "OU=Disabled Accounts,OU=Staff,OU=Users,OU=" + "$Site" + ",OU=District Sites,OU=GPSK12_TREE,DC=GPSK12,DC=local"
-    
-    Set-ADUser -Identity $UserDN -Enabled $False
-    
-    if ($UserDNStr -match "Student" -and $Site -match "GMS") {
 
-        Move-ADObject -Identity $UserDN -TargetPath $GMSStudentOU
+    $UserObj = [PSCustomObject]@{
+
+        UserDN = $UserDN
+        Username = $Username
+        Site = $Site
+        HomeDirectory = $HomeDir
+        UserType = $UserType
+  
+  }
+    
+    Set-ADUser -Identity $UserObj.UserDN -Enabled $False
+
+    Move-UserData ($UserObj)
+    
+    if ($UserObj.UserType -match "STU" -and $UserObj.Site -match "GMS") {
+
+        Move-ADObject -Identity $UserObj.UserDN -TargetPath $GMSStudentOU
 
     }
     
-    elseif ($UserDNStr -match "Staff" -and $UserDNStr -match "GHS") {
+    elseif ($UserObj.UserType -match "STA" -and $UserObj.Site -match "GHS") {
 
         Move-ADObject -Identity $UserDN -TargetPath $GHSStaffOU
 
     }
     
-    elseif ($UserDNStr -match "Staff" -and $Site -match "NPS") {
+    elseif ($UserObj.UserType -match "STA" -and $UserObj.Site -match "NPS") {
 
         Move-ADObject -Identity $UserDN -TargetPath $NPSStaffOU
 
     }
     
-    elseif ($UserDNStr -match "Student") {
-
+    elseif ($UserObj.UserDN -match "STU") {
+        
         Move-ADObject -Identity $UserDN -TargetPath $StudentOU
 
     }
     
-    elseif ($UserDNStr -match "Staff") {
+    elseif ($UserObj.UserDN -match "STA") {
 
         Move-ADObject -Identity $UserDN -TargetPath $StaffOU
 
