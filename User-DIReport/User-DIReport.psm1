@@ -4,8 +4,7 @@
   param(
 
     [Parameter(Mandatory = $False,
-      Position = 0,
-      HelpMessage = "Specify the users you want to create.")]
+      Position = 0)]
     [String[]]$Users
     
     )
