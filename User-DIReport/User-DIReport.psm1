@@ -126,7 +126,6 @@
         
         Sort-UserData
 
-        #$Fail | Out-String | Export-Csv -Path $OutPath
         return $Fail | Format-Table | Out-String | ForEach-Object { $_.Trim() }
         $FileHandle.Flush()
         $FileHandle.Dispose()
