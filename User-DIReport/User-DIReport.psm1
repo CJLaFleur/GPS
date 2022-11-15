@@ -14,7 +14,6 @@
         $Schools = "GHS", "GMS", "FSS", "FCS", "NPS", "NES", "DAV", "IT Department"
         $UserList = New-Object System.Collections.Generic.List[System.Object]
         $Fail = New-Object System.Collections.Generic.List[System.Object]
-        $Pass = New-Object System.Collections.Generic.List[System.Object]
 
         $OutPath = "\\dav-nas01\it$\GPS Dev\Reports\UserDIReport.csv"
         $FileHandle = New-Object System.IO.StreamWriter -Arg $OutPath
