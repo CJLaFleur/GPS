@@ -82,6 +82,7 @@
                         $FailedObj | Add-Member -Type NoteProperty -Name Username -Value $UserList[$i].Username -Force
                         $FailedObj | Add-Member -Type NoteProperty -Name FailReason -Value "Home directory doesn't match" -Force
                         $FailedObj | Add-Member -Type NoteProperty -Name OU -Value $UserList[$i].Site -Force
+                        
                         Output-CSV ($FailedObj)
                         $Fail.Add($FailedObj)
 
@@ -97,6 +98,7 @@
                 $FailedObj | Add-Member -Type NoteProperty -Name Username -Value $UserList[$i].Username -Force
                 $FailedObj | Add-Member -Type NoteProperty -Name FailReason -Value "Null profile path" -Force
 
+                Output-CSV ($FailedObj)
                 $Fail.Add($FailedObj)
                 
                 } 
@@ -107,6 +109,7 @@
                 $FailedObj | Add-Member -Type NoteProperty -Name FailReason -Value "OU doesn't match" -Force
                 $FailedObj | Add-Member -Type NoteProperty -Name OU -Value $UserList[$i].Site -Force
 
+                Output-CSV ($FailedObj)
                 $Fail.Add($FailedObj)
                 
                 }
@@ -124,7 +127,7 @@
         Sort-UserData
 
         #$Fail | Out-String | Export-Csv -Path $OutPath
-        #return $Fail | Format-Table | Out-String | ForEach-Object { $_.Trim() }
+        return $Fail | Format-Table | Out-String | ForEach-Object { $_.Trim() }
         $FileHandle.Flush()
         $FileHandle.Dispose()
         $FileHandle.Close()
