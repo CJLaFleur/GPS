@@ -6,7 +6,7 @@ function getActiveChromeDevices() {
 
   do {
 
-    const request = AdminDirectory.Chromeosdevices.list("C0431qt6i", {
+    const request = AdminDirectory.Chromeosdevices.list("MyCustomer, {
       pageToken: pageToken,
       maxResults: 100
 
