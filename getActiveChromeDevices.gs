@@ -95,7 +95,7 @@ function writeToSheet(activeDevices) {
 
   let count = 2
 
-  var ss = SpreadsheetApp.openById('165ZnqnJfmj87e2F1Q4Iu3OldyGncBTbt34_ehn4K6-k')
+  var ss = SpreadsheetApp.openById('placeholder')
   ss.getActiveSheet().getRange('A1').setValue("Asset ID")
   ss.getActiveSheet().getRange('B1').setValue("OU")
   ss.getActiveSheet().getRange('C1').setValue("IP Address")
